@@ -1,0 +1,20 @@
+# config.yml
+messages:
+  only-players: "&#FF0000This command can only be used by players!"
+  no-permission: "&#FF5555You don't have permission to use this command!"
+  no-elytra: "&#FFFF55You need to wear elytra to fly!"
+  flight-enabled: "&#00FF55Flight enabled!"
+  flight-disabled: "&#FF5555Flight disabled!"
+  elytra-removed: "&#FFAA00Flight disabled - elytra removed!"
+  flight-disabled-hit: "&#FF0000Flight disabled - you were hit!"
+  usage: "&#FF5555Usage: /elytrymfly reload"
+  reload-success: "&#00FF00Configuration reloaded successfully!"
+
+# Настройки эффектов при ударе во время полета
+hit-effects:
+  - effect: BLINDNESS
+    duration: 60  # в тиках (20 тиков = 1 секунда)
+    amplifier: 1  # уровень эффекта (начиная с 0)
+  - effect: WITHER
+    duration: 60
+    amplifier: 0

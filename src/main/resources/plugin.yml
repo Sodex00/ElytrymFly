@@ -1,0 +1,22 @@
+name: ElytrymFly
+version: '1.0'
+main: LIKGER.elytrymFly.ElytrymFly
+api-version: '1.21'
+authors: [ LIKGER ]
+permissions:
+  elytrymfly.use:
+    description: Allows use of /ffly command
+    default: op
+  elytrymfly.bypass:
+    description: Allows flying without elytra
+    default: op
+  elytrymfly.admin:
+    description: Allows use of admin commands
+    default: op
+commands:
+  ffly:
+    description: Toggle flight with elytra
+    permission: elytrymfly.use
+  elytrymfly:
+    description: ElytrymFly admin commands
+    permission: elytrymfly.admin
