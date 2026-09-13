@@ -1,17 +1,18 @@
 name: ElytrymFly
-version: '1.0'
+version: '${project.version}'
 main: LIKGER.elytrymFly.ElytrymFly
 api-version: '1.21'
 authors: [ LIKGER ]
+softdepend: [ CombatLogX, GreatCombat ]
 permissions:
   elytrymfly.use:
     description: Allows use of /ffly command
     default: op
   elytrymfly.bypass:
-    description: Allows flying without elytra
+    description: Allows flying without elytra and ignores durability/world/cooldown restrictions
     default: op
   elytrymfly.admin:
-    description: Allows use of admin commands
+    description: Allows use of admin commands (reload, status)
     default: op
 commands:
   ffly:

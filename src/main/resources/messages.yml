@@ -1,0 +1,38 @@
+# ElytrymFly messages.
+# Color codes: legacy '&a' codes and hex '&#RRGGBB' codes are both supported.
+# Placeholders are listed next to each message where they apply.
+
+only-players: "&#FF0000This command can only be used by players!"
+no-permission: "&#FF5555You don't have permission to use this command!"
+no-elytra: "&#FFFF55You need to wear elytra to fly!"
+
+flight-enabled: "&#00FF55Flight enabled!"
+flight-disabled: "&#FF5555Flight disabled!"
+elytra-removed: "&#FFAA00Flight disabled - elytra removed!"
+
+# Flight disabled because of a direct hit (only used when combat.plugin resolves to NONE).
+flight-disabled-hit: "&#FF0000Flight disabled - you were hit!"
+# Flight disabled because CombatLogX/GreatCombat tagged the player into combat.
+flight-disabled-combat: "&#FF0000Flight disabled - you entered combat!"
+# /ffly was denied because the player is already tagged into combat.
+flight-blocked-combat: "&#FF5555You can't fly while you are in combat!"
+# /ffly was denied because the current world is in flight.restricted-worlds.
+flight-blocked-world: "&#FF5555Flight is disabled in this world!"
+# /ffly was denied because of flight.toggle-cooldown-seconds. Placeholder: %seconds%
+flight-blocked-cooldown: "&#FF5555You must wait %seconds%s before toggling flight again!"
+# /ffly was denied because durability.min-durability-percent-to-fly was not met.
+flight-blocked-durability: "&#FF5555Your elytra is too damaged to fly!"
+
+# Sent when elytra durability drops below durability.low-durability-warning-percent. Placeholder: %percent%
+durability-low-warning: "&#FFAA00Your elytra durability is low: %percent%%!"
+# Sent when durability.on-break is BREAK_ELYTRA and the elytra actually breaks.
+durability-broken: "&#FF0000Your elytra broke and flight was disabled!"
+# Sent when durability.on-break is DISABLE_FLIGHT and durability reaches the minimum (elytra is kept).
+durability-depleted: "&#FF5555Your elytra ran out of durability, flight was disabled!"
+
+usage: "&#FF5555Usage: /elytrymfly <reload|status>"
+reload-success: "&#00FF00Configuration reloaded successfully!"
+reload-fail: "&#FF0000Failed to reload configuration, check the console for errors!"
+# Placeholder: %combat-plugin%
+status: "&#55FFFFCombat integration in use: &#FFFFFF%combat-plugin%"
+unknown-command: "&#FF5555Unknown subcommand. Use /elytrymfly <reload|status>"

@@ -6,7 +6,7 @@
 
     <groupId>LIKGER</groupId>
     <artifactId>elytrymfly</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>elytrymfly</name>
@@ -18,6 +18,7 @@
 
     <build>
         <defaultGoal>clean package</defaultGoal>
+        <finalName>${project.name}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -51,21 +52,51 @@
     </build>
 
     <repositories>
+        <!-- Paper API -->
         <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>papermc-repo</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+        <!-- CombatLogX API (com.github.sirblobman.*) -->
         <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
+            <id>sirblobman-public</id>
+            <url>https://nexus.sirblobman.xyz/public/</url>
+        </repository>
+        <!-- GreatCombat API (ru.encourager.greatcombat:api) -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
             <version>1.21-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- CombatLogX API: only used through the soft-dependency integration classes,
+             compiled against but never bundled/shaded (provided scope). -->
+        <dependency>
+            <groupId>com.github.sirblobman.api</groupId>
+            <artifactId>core</artifactId>
+            <version>2.9-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sirblobman.combatlogx</groupId>
+            <artifactId>api</artifactId>
+            <version>11.7-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- GreatCombat API: same soft-dependency treatment. -->
+        <dependency>
+            <groupId>ru.encourager.greatcombat</groupId>
+            <artifactId>api</artifactId>
+            <version>2.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

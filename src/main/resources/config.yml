@@ -1,20 +1,72 @@
-# config.yml
-messages:
-  only-players: "&#FF0000This command can only be used by players!"
-  no-permission: "&#FF5555You don't have permission to use this command!"
-  no-elytra: "&#FFFF55You need to wear elytra to fly!"
-  flight-enabled: "&#00FF55Flight enabled!"
-  flight-disabled: "&#FF5555Flight disabled!"
-  elytra-removed: "&#FFAA00Flight disabled - elytra removed!"
-  flight-disabled-hit: "&#FF0000Flight disabled - you were hit!"
-  usage: "&#FF5555Usage: /elytrymfly reload"
-  reload-success: "&#00FF00Configuration reloaded successfully!"
+# ElytrymFly configuration.
+# Player-facing text lives in messages.yml, not here.
 
-# Настройки эффектов при ударе во время полета
+# Which PvP/combat-tag plugin ElytrymFly should use to know when a player is "in combat".
+combat:
+  # AUTO         - detect CombatLogX or GreatCombat automatically, fall back to NONE if neither is installed.
+  # NONE         - vanilla detection: any direct player-vs-player hit (EntityDamageByEntityEvent).
+  # COMBATLOGX   - use CombatLogX's combat-tag API.
+  # GREATCOMBAT  - use GreatCombat's combat-tag API.
+  plugin: AUTO
+
+  # Disable an active flight as soon as the player is tagged into combat.
+  disable-flight-on-tag: true
+
+  # Prevent starting flight (/ffly) while the player is already tagged into combat.
+  block-flight-while-tagged: true
+
+  # Apply hit-effects (see below) whenever flight is disabled because of a combat tag/hit.
+  apply-hit-effects-on-tag: true
+
+# Potion effects applied to a player when their flight is disabled because they were hit / tagged into combat.
 hit-effects:
   - effect: BLINDNESS
-    duration: 60  # в тиках (20 тиков = 1 секунда)
-    amplifier: 1  # уровень эффекта (начиная с 0)
+    duration: 60  # in ticks (20 ticks = 1 second)
+    amplifier: 1  # effect level, starting at 0
   - effect: WITHER
     duration: 60
     amplifier: 0
+
+# General flight rules.
+flight:
+  # Worlds where /ffly is not allowed at all. Empty = no restriction.
+  restricted-worlds: []
+
+  # Minimum seconds between two uses of /ffly by the same player. 0 disables the cooldown.
+  toggle-cooldown-seconds: 0
+
+  # Disable flight automatically when the player's game mode changes away from SURVIVAL/ADVENTURE.
+  disable-on-gamemode-change: true
+
+# Elytra durability consumption while flying with ElytrymFly.
+durability:
+  enabled: true
+
+  # FIXED   - lose a fixed amount of durability points every interval.
+  # PERCENT - lose a percentage of the elytra's max durability every interval.
+  mode: FIXED
+
+  # How often durability is consumed, in ticks (20 ticks = 1 second).
+  interval-ticks: 100
+
+  # Durability points lost per interval when mode is FIXED.
+  fixed-amount: 1
+
+  # Percent of max durability lost per interval when mode is PERCENT.
+  percent-amount: 2.0
+
+  # Roll the Unbreaking enchantment's vanilla chance (1 / (level + 1)) to skip each point of damage.
+  respect-unbreaking: true
+
+  # Minimum durability percentage required to start flying. 0 disables this check.
+  min-durability-percent-to-fly: 5
+
+  # Warn the player when their elytra durability drops below this percentage.
+  low-durability-warning-percent: 15
+
+  # Minimum seconds between two low-durability warnings for the same player.
+  warning-cooldown-seconds: 10
+
+  # DISABLE_FLIGHT - just turn off flight when durability reaches 0, keep the elytra.
+  # BREAK_ELYTRA   - actually break/destroy the elytra, like vanilla tool breaking.
+  on-break: DISABLE_FLIGHT
